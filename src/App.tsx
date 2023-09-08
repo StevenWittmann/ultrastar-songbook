@@ -19,7 +19,7 @@ function App() {
 	const createFirstLetterList = (_songList) => {
 		const uniqueFirstLetterObjects = [];
 		const encounteredFirstLetters = new Set();
-		_songList.forEach((item, index, array) => {
+		_songList.forEach((item, index) => {
 			const firstLetter = (Object.values(item)[1] as string).charAt(0);
 
 			if (!encounteredFirstLetters.has(firstLetter)) {
