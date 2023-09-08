@@ -1,0 +1,9 @@
+@import '../styles/variables.scss';
+.button-back-to-top {
+	width: $button-height;
+	position: fixed;
+	bottom: 0;
+	right: 1rem;
+	background-color: $primary;
+	color: #fff;
+}

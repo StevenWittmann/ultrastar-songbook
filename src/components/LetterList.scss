@@ -1,0 +1,26 @@
+@import '../styles/variables.scss';
+.letter-list {
+	margin: 0 0 1rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min($button-height, 100%), 1fr));
+	gap: 0.25rem;
+	justify-content: center;
+
+	.button {
+		width: $button-height;
+	}
+}
+
+// hide letters and letter selection on search
+input:not(input:placeholder-shown) {
+	& + .wrapper div.table-container {
+		tr.heading,
+		span {
+			display: none;
+		}
+	}
+
+	& + .wrapper .letter-list {
+		display: none;
+	}
+}

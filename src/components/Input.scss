@@ -1,0 +1,9 @@
+@import '../styles/variables.scss';
+.input {
+	height: $button-height;
+	border: $primary 1px solid;
+	border: #ddd 1px solid;
+	margin-bottom: $mb-component;
+	font-size: 1.2em;
+	padding-left: 0.5rem;
+}

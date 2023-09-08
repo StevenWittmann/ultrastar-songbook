@@ -1,0 +1,14 @@
+@import '../styles/variables.scss';
+.button {
+	height: $button-height;
+	border: $primary 1px solid;
+	color: $primary;
+	text-decoration: none;
+
+	background-color: transparent;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	cursor: pointer;
+}
