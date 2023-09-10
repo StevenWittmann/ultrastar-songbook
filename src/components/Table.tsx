@@ -36,7 +36,6 @@ export default function Table() {
 								.map((row: { isFavorite }, index: number) => {
 									return (
 										<tr
-											ref={index + 'asdf'}
 											key={index}
 											onClick={() => {
 												row['isFavorite'] = !row['isFavorite'];
