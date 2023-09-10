@@ -17,7 +17,7 @@ export default function BurgerMenu(props) {
 				style={{ marginBottom: '.5rem' }}
 				classNames='menu-item'
 				label='Favorites'
-				title='Favorites'
+				title='Favorites ToDo'
 				onClickFn={() => {
 					setIsOpen(false);
 				}}
