@@ -5,10 +5,6 @@ import Button from './Button';
 import FileUploadButton from './FileUploadButton';
 import { useState } from 'react';
 
-function showSettings(event) {
-	event.preventDefault();
-}
-
 export default function BurgerMenu(props) {
 	const [isOpen, setIsOpen] = useState(false);
 	return (
