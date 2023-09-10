@@ -6,4 +6,12 @@
 	right: 1rem;
 	background-color: $primary;
 	color: #fff;
+	opacity: 0;
+	transition: opacity ease-in 0.2s, translate 0.3s;
+	translate: 0 100px;
+}
+
+#root.scrolled .button-back-to-top {
+	opacity: 1;
+	translate: 0 0;
 }

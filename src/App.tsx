@@ -6,16 +6,35 @@ import BackToTopButton from './components/BackToTopButton';
 import Input from './components/Input';
 import SongCount from './components/SongCount';
 
-import { createContext, useMemo, useState } from 'react';
+import { createContext, useCallback, useEffect, useMemo, useState } from 'react';
 import Table from './components/Table';
 import LetterList from './components/LetterList';
 import LZString from 'lz-string';
 
 function App() {
-	console.log('App Rerendered');
-
 	const [data, setData] = useState(JSON.parse(LZString.decompressFromUTF16(localStorage.getItem('songs'))) || []);
 	const [filterText, setFilterText] = useState('');
+	const [scrollHeight, setScrollHeight] = useState(document.scrollingElement.scrollHeight);
+
+	const handleNavigation = useCallback(
+		(event) => {
+			if (window.scrollY > 15) {
+				document.getElementById('root').classList.add('scrolled');
+			} else {
+				document.getElementById('root').classList.remove('scrolled');
+			}
+			setScrollHeight(window.scrollY);
+		},
+		[scrollHeight]
+	);
+
+	useEffect(() => {
+		window.addEventListener('scroll', handleNavigation);
+
+		return () => {
+			window.removeEventListener('scroll', handleNavigation);
+		};
+	}, [handleNavigation]);
 
 	// Memoized filtered data
 	const filteredData = useMemo(() => {
@@ -24,8 +43,12 @@ function App() {
 		});
 	}, [data, filterText]);
 
-	const handleFilterChange = (e) => {
-		setFilterText(e.target.value);
+	const handleFilterChange = (e, timer = 0) => {
+		window.clearTimeout(timer);
+		timer = setTimeout(() => {
+			console.log('setFilter', e.target.value);
+			setFilterText(e.target.value);
+		}, 500);
 	};
 
 	return (

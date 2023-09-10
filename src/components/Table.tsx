@@ -14,7 +14,6 @@ export default function Table() {
 	return (
 		<div className='table-container'>
 			{Reusables.createFirstLetterList(filteredData).map((letter, index, array) => {
-				console.log('Table rendered');
 				return (
 					<table id={letter.firstLetter} key={index} className='list'>
 						<caption style={{ captionSide: 'inline-start', textAlign: 'left' }}>{letter.firstLetter}</caption>
@@ -34,16 +33,16 @@ export default function Table() {
 						<tbody className='tableBody'>
 							{filteredData
 								.slice(letter.rangeFrom, index === array.length - 1 ? 9999 : letter.rangeTo)
-								.map((row: {}, index: number) => {
+								.map((row: { isFavorite }, index: number) => {
 									return (
 										<tr
+											ref={index + 'asdf'}
 											key={index}
 											onClick={() => {
-												setFavorites((prevValue: []) => {
-													return Reusables.toggleObject(prevValue, row);
-												});
+												row['isFavorite'] = !row['isFavorite'];
+												console.log(row);
 											}}
-											className={index % 2 === 0 ? '' : 'odd'}
+											className={row.isFavorite ? 'favorite' : null}
 										>
 											{Object.keys(row).map((column) => {
 												return <td key={index + 'tdata' + column}>{row[column]}</td>;

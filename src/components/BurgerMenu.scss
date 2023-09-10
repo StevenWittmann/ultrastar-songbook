@@ -1,11 +1,18 @@
 @import '../styles/variables.scss';
 /* Position and sizing of burger button */
 .bm-burger-button {
-	position: fixed;
-	width: 36px;
-	height: 30px;
+	position: absolute;
+	width: 30px;
+	height: 20px;
 	left: 1rem;
-	top: 1rem;
+	top: 1.5rem;
+
+	translate: 0;
+	transition: translate 0.3s;
+}
+
+#root.scrolled .bm-burger-button {
+	translate: -100px;
 }
 
 /* .bm-menu-wrap.bm-burger-button[aria-hidden='false'] {
