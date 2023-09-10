@@ -38,14 +38,13 @@ function App() {
 	// Memoized filtered data
 	const filteredData = useMemo(() => {
 		return data.filter((row) => {
-			return Object.values(row).find((column: string) => column.toLowerCase().includes(filterText));
+			return Object.values(row).find((column: string) => column.toLowerCase().includes(filterText.toLowerCase()));
 		});
 	}, [data, filterText]);
 
 	const handleFilterChange = (e, timer = 0) => {
 		window.clearTimeout(timer);
 		timer = window.setTimeout(() => {
-			console.log('setFilter', e.target.value);
 			setFilterText(e.target.value);
 		}, 500);
 	};
