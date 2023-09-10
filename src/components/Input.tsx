@@ -1,4 +1,4 @@
-import { ChangeEventHandler, HTMLInputTypeAttribute } from 'react';
+import { ChangeEventHandler, HTMLInputTypeAttribute, MouseEventHandler } from 'react';
 import './Input.scss';
 
 export default function Input(props: {
@@ -7,10 +7,14 @@ export default function Input(props: {
 	classNames?: string;
 	type?: HTMLInputTypeAttribute;
 	placeholder?: string;
+	style?: object;
+	value?: string;
+	onClickFn?: MouseEventHandler<HTMLAnchorElement>;
 	onChangeFn?: ChangeEventHandler<HTMLInputElement>;
 }) {
 	return (
 		<input
+			style={props.style}
 			className={props.classNames ? 'input ' + props.classNames : 'input'}
 			type={props.type}
 			id={props.id}

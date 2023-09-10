@@ -27,7 +27,7 @@
 		padding: 8px;
 
 		&:nth-of-type(1) {
-			min-width: 3.125rem;
+			width: 3.125rem;
 		}
 
 		&:nth-of-type(2) {
@@ -40,7 +40,14 @@
 
 		@media (min-width: 750px) {
 			&:nth-of-type(2) {
+				min-width: unset;
 				max-width: unset;
+				width: 12rem;
+			}
+
+			&:nth-of-type(3) {
+				min-width: 20rem;
+				width: 25rem;
 			}
 		}
 	}
