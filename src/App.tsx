@@ -12,21 +12,20 @@ import LetterList from './components/LetterList';
 import LZString from 'lz-string';
 
 function App() {
-	const [data, setData] = useState(JSON.parse(LZString.decompressFromUTF16(localStorage.getItem('songs'))) || []);
+	const [data, setData] = useState(
+		localStorage.getItem('songs') ? JSON.parse(LZString.decompressFromUTF16(localStorage.getItem('songs'))) || [] : []
+	);
 	const [filterText, setFilterText] = useState('');
 	const [scrollHeight, setScrollHeight] = useState(document.scrollingElement.scrollHeight);
 
-	const handleNavigation = useCallback(
-		(event) => {
-			if (window.scrollY > 15) {
-				document.getElementById('root').classList.add('scrolled');
-			} else {
-				document.getElementById('root').classList.remove('scrolled');
-			}
-			setScrollHeight(window.scrollY);
-		},
-		[scrollHeight]
-	);
+	const handleNavigation = useCallback(() => {
+		if (window.scrollY > 15) {
+			document.getElementById('root').classList.add('scrolled');
+		} else {
+			document.getElementById('root').classList.remove('scrolled');
+		}
+		setScrollHeight(window.scrollY);
+	}, [scrollHeight]);
 
 	useEffect(() => {
 		window.addEventListener('scroll', handleNavigation);
@@ -45,7 +44,7 @@ function App() {
 
 	const handleFilterChange = (e, timer = 0) => {
 		window.clearTimeout(timer);
-		timer = setTimeout(() => {
+		timer = window.setTimeout(() => {
 			console.log('setFilter', e.target.value);
 			setFilterText(e.target.value);
 		}, 500);
